@@ -14,7 +14,7 @@ map(Array<T>, (item: T, index: Number) -> R): Array<R>
 ```
 
 - Example:
-```
+``` DataWeave
 ["victor", "jose", "pedro"] map (value, index) -> { (index) : value}
 ```
 
@@ -24,7 +24,7 @@ map(Array<T>, (item: T, index: Number) -> R): Array<R>
 >
 
 - Other example:
-```
+``` DataWeave
 ['banana', 'apple', 'orange'] map ( "$$" : $)
 ```
 - Other result:
@@ -36,14 +36,14 @@ map(Array<T>, (item: T, index: Number) -> R): Array<R>
 * https://stackoverflow.com/questions/64991150/assemble-string-in-dataweave-2-x-efficiently/64991736#64991736
 
 - Structure:
-```
+``` DataWeave
 {
     "interpolationTest": "$fruit"
 }
 ```
 
 - Example:
-```
+``` DataWeave
 %dw 2.0
 output text/plain
 
@@ -83,21 +83,21 @@ else (1.00)
 ## Update Field
 * https://docs.mulesoft.com/mule-runtime/4.3/dw-operators#update-operator
 - Structure:
-```
+``` DataWeave
 <value_to_update> update {
     case <variable_name> at <update_expression>[!]? [if(<conditional_expression>)]? -> <new value>
     ...
 }
 ```
 - Example:
-```
+``` DataWeave
 payload update {
     case age at .age -> age + 1
 }
 ```
 
 - Other example:
-```
+``` DataWeave
 payload map ((user) ->
     user update {
         case name at .name if(name == "Ken") -> name ++ " (Victor)"
@@ -107,7 +107,7 @@ payload map ((user) ->
 ```
 
 - Another best example:
-```
+``` DataWeave
 payload  map ((user) ->
     user update {
         case name at .name! -> if(name == null) "JOHN" else upper(name)
