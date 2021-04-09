@@ -9,7 +9,7 @@
 * https://docs.mulesoft.com/mule-runtime/4.3/dw-core-functions-map#map1
 
 - Structure:
-```
+``` DataWeave
 map(Array<T>, (item: T, index: Number) -> R): Array<R>
 ```
 
