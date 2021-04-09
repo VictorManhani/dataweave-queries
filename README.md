@@ -9,26 +9,28 @@
 * https://docs.mulesoft.com/mule-runtime/4.3/dw-core-functions-map#map1
 
 - Structure:
-``` kotlin
+```
 map(Array<T>, (item: T, index: Number) -> R): Array<R>
 ```
 
 - Example:
-``` kotlin
+``` java
 ["victor", "jose", "pedro"] map (value, index) -> { (index) : value}
 ```
 
 - Result:
->
->[ { "0": "victor" }, { "1": "jose" }, { "2": "pedro" } ]
->
+``` json
+[ { "0": "victor" }, { "1": "jose" }, { "2": "pedro" } ]
+```
 
 - Other example:
-``` kotlin
+``` java
 ['banana', 'apple', 'orange'] map ( "$$" : $)
 ```
 - Other result:
-> [{ "0": "banana" }, { "1": "apple" }, { "2": "orange" }]  
+``` json
+[{ "0": "banana" }, { "1": "apple" }, { "2": "orange" }]  
+```
 
 <br />
 
@@ -36,14 +38,12 @@ map(Array<T>, (item: T, index: Number) -> R): Array<R>
 * https://stackoverflow.com/questions/64991150/assemble-string-in-dataweave-2-x-efficiently/64991736#64991736
 
 - Structure:
-``` kotlin
-{
-    "interpolationTest": "$fruit"
-}
+```
+"$variableString"
 ```
 
 - Example:
-``` kotlin
+``` java
 %dw 2.0
 output text/plain
 
@@ -66,18 +66,23 @@ banner(msg)
 ## Conditions | Conditionals
 * https://docs.mulesoft.com/mule-runtime/4.3/dw-operators#scope-and-flow-control-operators
 
-- Structure
-``` kotlin
+- Structure:
+``` 
 if (condition) (expression return)
 else if (condition) (expression return)
 else (expression return)
 ```
 
-- Example
-``` kotlin
+- Example:
+``` java
 if (fruit == "banana") (1.23)
 else if (fruit == "apple") (2.31)
 else (1.00)
+```
+
+- Result:
+``` json
+1.23
 ```
 
 <br />
@@ -86,7 +91,7 @@ else (1.00)
 * https://docs.mulesoft.com/mule-runtime/4.3/dw-operators#update-operator
 
 - Structure:
-``` kotlin
+```
 <value_to_update> update {
     case <variable_name> at <update_expression>[!]? [if(<conditional_expression>)]? -> <new value>
     ...
@@ -94,14 +99,14 @@ else (1.00)
 ```
 
 - Example:
-``` kotlin
+``` java
 payload update {
     case age at .age -> age + 1
 }
 ```
 
 - Other example:
-``` kotlin
+``` java
 payload map ((user) ->
     user update {
         case name at .name if(name == "Ken") -> name ++ " (Victor)"
@@ -111,7 +116,7 @@ payload map ((user) ->
 ```
 
 - Another best example:
-``` kotlin
+``` java
 payload  map ((user) ->
     user update {
         case name at .name! -> if(name == null) "JOHN" else upper(name)
