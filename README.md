@@ -65,14 +65,16 @@ banner(msg)
 
 ## Conditions | Conditionals
 * https://docs.mulesoft.com/mule-runtime/4.3/dw-operators#scope-and-flow-control-operators
+
 - Structure
-```
+``` kotlin
 if (condition) (expression return)
 else if (condition) (expression return)
 else (expression return)
 ```
+
 - Example
-```
+``` kotlin
 if (fruit == "banana") (1.23)
 else if (fruit == "apple") (2.31)
 else (1.00)
@@ -82,6 +84,7 @@ else (1.00)
 
 ## Update Field
 * https://docs.mulesoft.com/mule-runtime/4.3/dw-operators#update-operator
+
 - Structure:
 ``` kotlin
 <value_to_update> update {
@@ -89,6 +92,7 @@ else (1.00)
     ...
 }
 ```
+
 - Example:
 ``` kotlin
 payload update {
